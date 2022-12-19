@@ -1,11 +1,11 @@
 import random
 from time import sleep
 
-from unicorn_hat_sim import unicornhat as uh
+# from unicorn_hat_sim import unicornhat
+import unicornhat as uh
 
 
 class LightBoard:
-
     pixels = None
 
     def __init__(self):
@@ -46,14 +46,17 @@ class LightBoard:
                 uh.set_pixel(i, j, 115, 115, 115)
         uh.show()
 
-
     def random_shimmer(self):
         if self.pixels is None:
-            self.pixels = uh.pixels.copy()
+            self.pixels = []
+            for i in range(8):
+                for j in range(8):
+                    self.pixels[(i * 8) + j] = uh.get_pixel()
         for i in range(8):
             for j in range(8):
-                rgb = self.pixels[(i * 1) + j]
-                updated = (self.modolate_rgb(rgb[0] + (i + j) + 3), self.modolate_rgb(rgb[1] - (i - j) - 5), self.modolate_rgb(rgb[2] - (i+j) + 8))
+                rgb = self.pixels[(i * 8) + j]
+                updated = (self.modolate_rgb(rgb[0] + (i + j) + 3), self.modolate_rgb(rgb[1] - (i - j) - 5),
+                           self.modolate_rgb(rgb[2] - (i + j) + 8))
                 self.pixels[(i * 1) + j] = updated
                 r = abs(updated[0])
                 g = abs(updated[1])

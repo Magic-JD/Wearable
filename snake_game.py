@@ -3,57 +3,64 @@ import threading
 from time import sleep
 import keyboard
 
+import bluedot as bd
 from direction import Direction
 from food import Food
 from snake import SnakeSegment
 from lightboard import LightBoard
 
-running = True
-snake = SnakeSegment(0, 4, Direction.EAST)
 
-def get_user_input():
-    global running
-    while running:
-        if keyboard.is_pressed("a"):
-            snake.turn_left()
-        if keyboard.is_pressed("d"):
-            snake.turn_right()
-        sleep(0.1)
+class Game:
+    running = True
+    snake = SnakeSegment(0, 4, Direction.EAST)
 
+    def __init__(self, bd):
+        self.bd = bd
+        self.button_left = bd[0, 0]
+        self.button_right = bd[1, 0]
+        self.button_left.when_pressed = self.snake.turn_left()
+        self.button_right.when_pressed = self.snake.turn_right()
 
-def generate_food(list_pos):
-    list_areas = []
-    for i in range(7):
-        for j in range(7):
-            list_areas.append((i, j))
-    filtered = [x for x in list_areas if x not in list_pos]
-    loc = random.choice(filtered)
-    return Food(loc[0], loc[1])
+    def get_user_input(self):
+        while running:
+            if bd.BlueDot.is_pressed:
+                self.snake.turn_left()
+            if keyboard.is_pressed("d"):
+                self.snake.turn_right()
+            sleep(0.1)
 
+    def generate_food(self, list_pos):
+        list_areas = []
+        for i in range(7):
+            for j in range(7):
+                list_areas.append((i, j))
+        filtered = [x for x in list_areas if x not in list_pos]
+        loc = random.choice(filtered)
+        return Food(loc[0], loc[1])
 
-def run_game_loop():
-    global running
-    lightboard = LightBoard()
-    food = generate_food(snake.get_positions())
-    lightboard.light_snake(snake)
-    lightboard.light_food(food)
-    while running:
-        lightboard.turn_off_snake(snake)
-        snake.move()
-        if snake.x is food.x and snake.y is food.y:
-            snake.grow()
-            food = generate_food(snake.get_positions())
-            lightboard.light_food(food)
-        if snake.is_overlapping():
-            running = False
-        lightboard.light_snake(snake)
-        sleep(0.3)
-    lightboard.flash(snake)
-    lightboard.turn_off_snake(snake)
-    lightboard.turn_off_food(food)
+    def run_game_loop(self):
+        global running
+        lightboard = LightBoard()
+        food = self.generate_food(self.snake.get_positions())
+        lightboard.light_snake(self.snake)
+        lightboard.light_food(food)
+        while running:
+            lightboard.turn_off_snake(self.snake)
+            self.snake.move()
+            if self.snake.x is food.x and self.snake.y is food.y:
+                self.snake.grow()
+                food = self.generate_food(self.snake.get_positions())
+                lightboard.light_food(food)
+            if self.snake.is_overlapping():
+                running = False
+            lightboard.light_snake(self.snake)
+            sleep(0.3)
+        lightboard.flash(self.snake)
+        lightboard.turn_off_snake(self.snake)
+        lightboard.turn_off_food(food)
 
-def start_game():
-    threading.Thread(target=get_user_input).start()
-    game_thread = threading.Thread(target=run_game_loop)
-    game_thread.start()
-    game_thread.join()
+    def start_game(self):
+        threading.Thread(target=self.get_user_input).start()
+        game_thread = threading.Thread(target=self.run_game_loop)
+        game_thread.start()
+        game_thread.join()
