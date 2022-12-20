@@ -1,8 +1,7 @@
-import threading
-
 from bluedot import BlueDot
 from snake_game import Game
 from lightboard import LightBoard
+from time import sleep
 
 lightboard = LightBoard()
 bd = BlueDot()
@@ -48,3 +47,6 @@ def start_game():
 bd.when_client_connects = connect
 bd.when_client_disconnects = disconnect
 bd.when_pressed = start_game
+
+while True:
+    sleep(3)
