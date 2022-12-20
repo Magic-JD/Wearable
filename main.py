@@ -10,12 +10,22 @@ light_show = True
 client_connected = False
 
 
+def show_lightshow():
+    while client_connected:
+        if light_show:
+            lightboard.random_shimmer()
+    lightboard.clear()
+
+
+light_show_thread = threading.Thread(target=show_lightshow)
+
+
 def run_connected():
     global light_show
+    global light_show_thread
     while client_connected:
-        while light_show:
-            sleep(3)
-        lightboard.clear()
+        while light_show_thread.isAlive():
+            sleep(0.1)
         bd.resize(2, 1)
         button_right = bd[0, 0]
         button_left = bd[1, 0]
@@ -27,21 +37,13 @@ def run_connected():
         button_right.when_pressed = None
         bd.resize(1, 0)
         light_show = True
-
-
-def show_lightshow():
-    while client_connected:
-        if light_show:
-            lightboard.random_shimmer()
-        if not light_show:
-            sleep(3)
+        light_show_thread.start()
 
 
 def connect():
     global client_connected
     client_connected = True
-    threading.Thread(target=show_lightshow()).start()
-    run_connected()
+    light_show_thread.start()
 
 
 def disconnect():
@@ -52,6 +54,7 @@ def disconnect():
 def start_game():
     global light_show
     light_show = False
+    run_connected()
 
 
 bd.when_client_connects = connect
