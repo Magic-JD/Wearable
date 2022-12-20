@@ -41,17 +41,18 @@ while True:
 
     while client_connected:
         show_lightshow()
-        bd.resize(2, 1)
-        bd.when_pressed = None
-        button_right = bd[0, 0]
-        button_left = bd[1, 0]
-        sg = Game()
-        button_left.when_pressed = sg.snake.turn_left
-        button_right.when_pressed = sg.snake.turn_right
-        print("starting game")
-        sg.start_game()
-        button_left.when_pressed = None
-        button_right.when_pressed = None
-        bd.resize(1, 0)
-        bd.when_pressed = start_game
-        light_show = True
+        if client_connected:
+            bd.resize(2, 1)
+            bd.when_pressed = None
+            button_right = bd[0, 0]
+            button_left = bd[1, 0]
+            sg = Game()
+            button_left.when_pressed = sg.snake.turn_left
+            button_right.when_pressed = sg.snake.turn_right
+            print("starting game")
+            sg.start_game()
+            button_left.when_pressed = None
+            button_right.when_pressed = None
+            bd.resize(1, 0)
+            bd.when_pressed = start_game
+            light_show = True
