@@ -65,7 +65,7 @@ class LightBoard:
                 r = abs(updated[0])
                 g = abs(updated[1])
                 b = abs(updated[2])
-                print(r + " " + g + " " + b)
+                print(f'{r} {g} {b}')
 
                 uh.set_pixel(i, j, r, g, b)
         uh.show()
