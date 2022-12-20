@@ -24,7 +24,7 @@ def run_connected():
     global light_show
     global light_show_thread
     while client_connected:
-        while light_show_thread.isAlive():
+        while light_show_thread.is_alive():
             sleep(0.1)
         bd.resize(2, 1)
         button_right = bd[0, 0]
