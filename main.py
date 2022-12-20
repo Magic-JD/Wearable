@@ -36,6 +36,7 @@ bd.when_client_disconnects = disconnect
 bd.when_pressed = start_game
 
 while True:
+    lightboard.clear()
     while not client_connected:
         sleep(3)
 
