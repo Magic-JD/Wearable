@@ -1,4 +1,3 @@
-import threading
 from bluedot import BlueDot
 from snake_game import Game
 from lightboard import LightBoard
@@ -16,18 +15,34 @@ def show_lightshow():
     lightboard.clear()
 
 
-light_show_thread = threading.Thread(target=show_lightshow)
+def connect():
+    global client_connected
+    client_connected = True
 
 
-def run_connected():
+def disconnect():
+    global client_connected
+    client_connected = False
+
+
+def start_game():
     global light_show
-    global light_show_thread
-    global bd
+    print("first pressed")
+    light_show = False
+
+
+bd.when_client_connects = connect
+bd.when_client_disconnects = disconnect
+bd.when_pressed = start_game
+
+while True:
+    while not client_connected:
+        sleep(3)
+
     while client_connected:
-        while light_show_thread.is_alive():
-            sleep(0.1)
+        show_lightshow()
         bd.resize(2, 1)
-        #bd.when_pressed = None
+        bd.when_pressed = None
         button_right = bd[0, 0]
         button_left = bd[1, 0]
         sg = Game()
@@ -40,30 +55,3 @@ def run_connected():
         bd.resize(1, 0)
         bd.when_pressed = start_game
         light_show = True
-        light_show_thread.start()
-
-
-def connect():
-    global client_connected
-    client_connected = True
-    light_show_thread.start()
-
-
-def disconnect():
-    global client_connected
-    client_connected = False
-
-
-def start_game():
-    global light_show
-    print("first pressed")
-    light_show = False
-    run_connected()
-
-
-bd.when_client_connects = connect
-bd.when_client_disconnects = disconnect
-bd.when_pressed = start_game
-
-while True:
-    sleep(3)
