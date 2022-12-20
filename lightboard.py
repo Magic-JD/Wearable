@@ -40,12 +40,6 @@ class LightBoard:
             self.turn_off_snake(head)
             sleep(0.1)
 
-    def light_all(self):
-        for i in range(8):
-            for j in range(8):
-                uh.set_pixel(i, j, 115, 115, 115)
-        uh.show()
-
     def random_shimmer(self):
         if self.pixels is None:
             self.pixels = []
@@ -69,7 +63,8 @@ class LightBoard:
 
                 uh.set_pixel(i, j, r, g, b)
         uh.show()
-        sleep(0.1)
+        print("")
+        sleep(5)
 
     def modolate_rgb(self, value):
         if value > 255:

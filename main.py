@@ -5,7 +5,6 @@ from snake_game import Game
 from lightboard import LightBoard
 
 lightboard = LightBoard()
-lightboard.light_all()
 bd = BlueDot()
 waiting_for_input = True
 
