@@ -22,6 +22,7 @@ light_show_thread = threading.Thread(target=show_lightshow)
 def run_connected():
     global light_show
     global light_show_thread
+    global bd
     while client_connected:
         while light_show_thread.is_alive():
             sleep(0.1)
