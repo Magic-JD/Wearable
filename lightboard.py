@@ -51,7 +51,7 @@ class LightBoard:
             self.pixels = []
             for i in range(8):
                 for j in range(8):
-                    self.pixels[(i * 8) + j] = uh.get_pixel()
+                    self.pixels.append(uh.get_pixel(i, j))
         for i in range(8):
             for j in range(8):
                 rgb = self.pixels[(i * 8) + j]
