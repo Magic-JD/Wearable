@@ -25,8 +25,8 @@ while True:
     button_left = bd[0, 0]
     button_right = bd[1, 0]
     sg = Game()
-    button_left.when_pressed = sg.snake.turn_left()
-    button_right.when_pressed = sg.snake.turn_right()
+    button_left.when_pressed=sg.snake.turn_left
+    button_right.when_pressed=sg.snake.turn_right
     sg.start_game()
     bd.when_pressed=reset
     waiting_for_input = True
