@@ -28,7 +28,7 @@ while True:
     button_left.when_pressed=sg.snake.turn_left
     button_right.when_pressed=sg.snake.turn_right
     sg.start_game()
-    bd.when_pressed=reset
+    bd.resize(2, 1)
     waiting_for_input = True
 
 

@@ -42,7 +42,7 @@ class Game:
                 food = self.generate_food(self.snake.get_positions())
                 lightboard.light_food(food)
             if self.snake.is_overlapping():
-                running = False
+                self.running = False
             lightboard.light_snake(self.snake)
             sleep(0.3)
         lightboard.flash(self.snake)
