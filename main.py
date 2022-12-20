@@ -27,7 +27,7 @@ def run_connected():
         while light_show_thread.is_alive():
             sleep(0.1)
         bd.resize(2, 1)
-        bd.when_pressed = None
+        #bd.when_pressed = None
         button_right = bd[0, 0]
         button_left = bd[1, 0]
         sg = Game()
