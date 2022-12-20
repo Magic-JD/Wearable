@@ -14,11 +14,13 @@ class SnakeSegment:
         self.direction = direction
 
     def turn_left(self):
+        print("left pressed")
         if not self.has_turned:
             self.direction = Direction(((self.direction.value + 4) - 1) % 4)
         self.has_turned = True
 
     def turn_right(self):
+        print("right pressed")
         if not self.has_turned:
             self.direction = Direction((self.direction.value + 1) % 4)
         self.has_turned = True

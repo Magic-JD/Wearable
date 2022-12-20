@@ -56,6 +56,7 @@ def disconnect():
 
 def start_game():
     global light_show
+    print("first pressed")
     light_show = False
     run_connected()
 
