@@ -22,8 +22,8 @@ while True:
         lightboard.random_shimmer()
     lightboard.clear()
     bd.resize(2, 1)
-    button_left = bd[0, 0]
-    button_right = bd[1, 0]
+    button_right = bd[0, 0]
+    button_left = bd[1, 0]
     sg = Game()
     button_left.when_pressed=sg.snake.turn_left
     button_right.when_pressed=sg.snake.turn_right
