@@ -55,6 +55,7 @@ class LightBoard:
         self.random_shimmer_post_setup()
 
     def random_shimmer_post_setup(self):
+        uh.clear()
         j = 0
         for i in range(2):
             #for j in range(8):
@@ -79,7 +80,4 @@ class LightBoard:
         return value
 
     def clear(self):
-        for i in range(8):
-            for j in range(8):
-                uh.set_pixel(i, j, 0, 0, 0)
-                uh.show()
+        uh.clear()
