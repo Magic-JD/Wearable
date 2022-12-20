@@ -56,9 +56,8 @@ class LightBoard:
 
     def random_shimmer_post_setup(self):
         uh.clear()
-        j = 0
-        for i in range(2):
-            #for j in range(8):
+        for i in range(8):
+            for j in range(8):
                 rgb = self.pixels[(i * 8) + j]
                 updated = (self.modolate_rgb(rgb[0] + (i + j) + 3), self.modolate_rgb(rgb[1] - (i - j) - 5),
                            self.modolate_rgb(rgb[2] - (i + j) + 8))
@@ -70,7 +69,7 @@ class LightBoard:
 
                 uh.set_pixel(i, j, r, g, b)
         uh.show()
-        sleep(10)
+        sleep(0.1)
 
     def modolate_rgb(self, value):
         if value > 255:
