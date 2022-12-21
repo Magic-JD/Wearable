@@ -22,9 +22,9 @@ class LightBoard:
                     if k is 2:
                         uh.set_pixel(i, j, 0, 0, 255)
             uh.show()
-            sleep(1)
+            sleep(0.5)
             self.clear()
-            sleep(1)
+            sleep(0.5)
 
     def light_snake(self, snake):
         temp = snake
