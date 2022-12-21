@@ -8,6 +8,7 @@ bd = BlueDot()
 light_show = True
 client_connected = False
 
+lightboard.power_up()
 
 def show_lightshow():
     while client_connected and light_show:

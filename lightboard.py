@@ -11,6 +11,21 @@ class LightBoard:
     def __init__(self):
         uh.set_layout(uh.AUTO)
 
+    def power_up(self):
+        for k in range(3):
+            for i in range(8):
+                for j in range(8):
+                    if k is 0:
+                        uh.set_pixel(i, j, 255, 0, 0)
+                    if k is 1:
+                        uh.set_pixel(i, j, 0, 255, 0)
+                    if k is 2:
+                        uh.set_pixel(i, j, 0, 0, 255)
+            uh.show()
+            sleep(1)
+            self.clear()
+            sleep(1)
+
     def light_snake(self, snake):
         temp = snake
         while temp is not None:
@@ -58,7 +73,6 @@ class LightBoard:
                 r = abs(updated[0])
                 g = abs(updated[1])
                 b = abs(updated[2])
-                #print(f'{r} {g} {b}')
                 uh.set_pixel(i, j, r, g, b)
         uh.show()
         sleep(0.25)
