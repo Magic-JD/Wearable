@@ -31,8 +31,8 @@ class Game:
         self.snake.move()
         if self.snake.x is self.food.x and self.snake.y is self.food.y:
             self.snake.grow()
-            food = self.generate_food(self.snake.get_positions())
-            self.lightboard.light_food(food)
+            self.food = self.generate_food(self.snake.get_positions())
+            self.lightboard.light_food(self.food)
         if self.snake.is_overlapping():
             self.running = False
         self.lightboard.light_snake(self.snake)
