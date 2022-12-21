@@ -14,11 +14,8 @@ class Game:
 
     def __init__(self):
         self.snake = SnakeSegment(0, 4, Direction.EAST)
-    #  self.bd = bd
-      #  self.button_left = bd[0, 0]
-      #  self.button_right = bd[1, 0]
-      #  self.button_left.when_pressed = self.snake.turn_left()
-      #  self.button_right.when_pressed = self.snake.turn_right()
+        self.lightboard = LightBoard()
+        self.food = self.generate_food(self.snake.get_positions())
 
     def generate_food(self, list_pos):
         list_areas = []
@@ -30,24 +27,21 @@ class Game:
         return Food(loc[0], loc[1])
 
     def run_game_loop(self):
-        lightboard = LightBoard()
-        food = self.generate_food(self.snake.get_positions())
-        lightboard.light_snake(self.snake)
-        lightboard.light_food(food)
-        while self.running:
-            lightboard.turn_off_snake(self.snake)
-            self.snake.move()
-            if self.snake.x is food.x and self.snake.y is food.y:
-                self.snake.grow()
-                food = self.generate_food(self.snake.get_positions())
-                lightboard.light_food(food)
-            if self.snake.is_overlapping():
-                self.running = False
-            lightboard.light_snake(self.snake)
-            sleep(0.3)
-        lightboard.flash(self.snake)
-        lightboard.turn_off_snake(self.snake)
-        lightboard.turn_off_food(food)
+        self.lightboard.turn_off_snake(self.snake)
+        self.snake.move()
+        if self.snake.x is self.food.x and self.snake.y is self.food.y:
+            self.snake.grow()
+            food = self.generate_food(self.snake.get_positions())
+            self.lightboard.light_food(food)
+        if self.snake.is_overlapping():
+            self.running = False
+        self.lightboard.light_snake(self.snake)
 
     def start_game(self):
-        self.run_game_loop()
+        self.lightboard.light_snake(self.snake)
+        self.lightboard.light_food(self.food)
+
+    def end_game(self):
+        self.lightboard.flash(self.snake)
+        self.lightboard.turn_off_snake(self.snake)
+        self.lightboard.turn_off_food(self.food)

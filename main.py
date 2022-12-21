@@ -49,6 +49,10 @@ while True:
             button_right.when_pressed = sg.snake.turn_right
             button_left.when_pressed = sg.snake.turn_left
             sg.start_game()
+            while sg.running and client_connected:
+                sg.run_game_loop()
+                sleep(0.3)
+            sg.end_game()
             button_right.when_pressed = None
             button_left.when_pressed = None
             bd.resize(1, 1)
