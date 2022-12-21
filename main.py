@@ -32,7 +32,7 @@ def start_game():
 
 bd.when_client_connects = connect
 bd.when_client_disconnects = disconnect
-bd.when_pressed = start_game
+bd[0, 0].when_pressed = start_game
 
 while True:
     while not client_connected:
@@ -41,8 +41,8 @@ while True:
     while client_connected:
         show_lightshow()
         if client_connected:
+            bd[0, 0].when_pressed = None
             bd.resize(2, 1)
-            bd.when_pressed = None
             button_right = bd[0, 0]
             button_left = bd[1, 0]
             sg = Game()
@@ -52,5 +52,5 @@ while True:
             button_left.when_pressed = None
             button_right.when_pressed = None
             bd.resize(1, 1)
-            bd.when_pressed = start_game
+            bd[0, 0].when_pressed = start_game
             light_show = True
