@@ -15,16 +15,16 @@ class LightBoard:
         for k in range(3):
             for i in range(8):
                 for j in range(8):
-                    if k is 0:
+                    if k == 0:
                         uh.set_pixel(i, j, 255, 0, 0)
-                    if k is 1:
+                    if k == 1:
                         uh.set_pixel(i, j, 0, 255, 0)
-                    if k is 2:
+                    if k == 2:
                         uh.set_pixel(i, j, 0, 0, 255)
             uh.show()
-            sleep(0.5)
+            sleep(0.25)
             self.clear()
-            sleep(0.5)
+            sleep(0.25)
 
     def light_snake(self, snake):
         temp = snake

@@ -1,8 +1,5 @@
 import random
-import threading
-from time import sleep
 
-import bluedot as bd
 from direction import Direction
 from food import Food
 from snake import SnakeSegment
