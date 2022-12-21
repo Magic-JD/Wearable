@@ -52,7 +52,7 @@ while True:
             sg.start_game()
             while sg.running and client_connected:
                 sg.run_game_loop()
-                sleep(0.3)
+                sleep(0.2)
             sg.end_game()
             button_right.when_pressed = None
             button_left.when_pressed = None
