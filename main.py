@@ -46,11 +46,11 @@ while True:
             button_right = bd[0, 0]
             button_left = bd[1, 0]
             sg = Game()
-            button_left.when_pressed = sg.snake.turn_left
             button_right.when_pressed = sg.snake.turn_right
+            button_left.when_pressed = sg.snake.turn_left
             sg.start_game()
-            button_left.when_pressed = None
             button_right.when_pressed = None
+            button_left.when_pressed = None
             bd.resize(1, 1)
             bd[0, 0].when_pressed = start_game
             light_show = True
