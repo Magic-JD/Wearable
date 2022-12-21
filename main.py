@@ -42,6 +42,7 @@ while True:
         show_lightshow()
         if client_connected:
             bd.resize(2, 1)
+            bd.when_pressed = None
             button_right = bd[0, 0]
             button_left = bd[1, 0]
             sg = Game()
@@ -50,5 +51,6 @@ while True:
             sg.start_game()
             button_left.when_pressed = None
             button_right.when_pressed = None
-            bd.resize(1, 0)
+            bd.resize(1, 1)
+            bd.when_pressed = start_game
             light_show = True
