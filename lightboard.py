@@ -75,7 +75,7 @@ class LightBoard:
                 b = abs(updated[2])
                 uh.set_pixel(i, j, r, g, b)
         uh.show()
-        sleep(0.25)
+        sleep(0.1)
 
     def modolate_rgb(self, value):
         if value > 255:
