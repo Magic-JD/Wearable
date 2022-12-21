@@ -11,6 +11,7 @@ client_connected = False
 lightboard.power_up()
 
 def show_lightshow():
+    lightboard.random_shimmer_setup()
     while client_connected and light_show:
         lightboard.random_shimmer()
     lightboard.clear()
