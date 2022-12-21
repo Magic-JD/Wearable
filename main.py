@@ -43,8 +43,8 @@ while True:
         if client_connected:
             bd[0, 0].when_pressed = None
             bd.resize(1, 2)
-            button_right = bd[0, 1]
-            button_left = bd[0, 0]
+            button_right = bd[0, 0]
+            button_left = bd[0, 1]
             sg = Game()
             button_right.when_pressed = sg.snake.turn_right
             button_left.when_pressed = sg.snake.turn_left
