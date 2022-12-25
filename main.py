@@ -44,17 +44,28 @@ while True:
         show_lightshow()
         if client_connected:
             bd[0, 0].when_pressed = None
-            bd.resize(1, 2)
-            button_right = bd[0, 0]
-            button_left = bd[0, 1]
+            bd.resize(3, 3)
+            bd[0, 0].visible = False
+            bd[0, 2].visible = False
+            bd[2, 2].visible = False
+            bd[2, 0].visible = False
+            bd[1, 1].visible = False
+            button_up = bd[0, 1]
+            button_right = bd[1, 2]
+            button_left = bd[1, 0]
+            button_down = bd[2, 1]
             sg = Game()
+            button_up.when_pressed = sg.snake.turn_up
+            button_down.when_pressed = sg.snake.turn_down
             button_right.when_pressed = sg.snake.turn_right
             button_left.when_pressed = sg.snake.turn_left
             sg.start_game()
             while sg.running and client_connected:
                 sg.run_game_loop()
-                sleep(0.2)
+                sleep(0.3)
             sg.end_game()
+            button_up.when_pressed = None
+            button_down.when_pressed = None
             button_right.when_pressed = None
             button_left.when_pressed = None
             bd.resize(1, 1)

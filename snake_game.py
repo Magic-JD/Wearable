@@ -10,7 +10,7 @@ class Game:
     running = True
 
     def __init__(self):
-        self.snake = SnakeSegment(4, 8, Direction.SOUTH)
+        self.snake = SnakeSegment(8, 4, Direction.WEST)
         self.lightboard = LightBoard()
         self.food = self.generate_food(self.snake.get_positions())
 
