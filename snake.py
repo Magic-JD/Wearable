@@ -15,6 +15,8 @@ class SnakeSegment:
 
     def turn_left(self):
         print("Try to turn left")
+        print(self.direction)
+        print(self.has_turned)
         if (self.direction == Direction.NORTH or self.direction == Direction.SOUTH) and self.has_turned:
             print("turn left")
             self.direction = Direction.EAST
