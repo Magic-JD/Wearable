@@ -29,6 +29,8 @@ class SnakeSegment:
 
     def turn_up(self):
         print("Try to turn up")
+        print(self.direction)
+        print(self.has_turned)
         if (self.direction == Direction.EAST or self.direction == Direction.WEST) and self.has_turned:
             self.direction = Direction.NORTH
             self.has_turned = True
