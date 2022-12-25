@@ -14,11 +14,7 @@ class SnakeSegment:
         self.direction = direction
 
     def turn_left(self):
-        print("Try to turn left")
-        print(self.direction)
-        print(self.has_turned)
         if (self.direction == Direction.NORTH or self.direction == Direction.SOUTH) and not self.has_turned:
-            print("turn left")
             self.direction = Direction.EAST
             self.has_turned = True
 
@@ -28,13 +24,9 @@ class SnakeSegment:
             self.has_turned = True
 
     def turn_up(self):
-        print("Try to turn up")
-        print(self.direction)
-        print(self.has_turned)
         if (self.direction == Direction.EAST or self.direction == Direction.WEST) and not self.has_turned:
             self.direction = Direction.NORTH
             self.has_turned = True
-            print("turn up")
 
     def turn_down(self):
         if (self.direction == Direction.EAST or self.direction == Direction.WEST) and not self.has_turned:

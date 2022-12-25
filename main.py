@@ -70,4 +70,5 @@ while True:
             button_left.when_pressed = None
             bd.resize(1, 1)
             bd[0, 0].when_pressed = start_game
+            bd[0, 0].visible = True
             light_show = True
