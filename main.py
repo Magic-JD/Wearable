@@ -50,10 +50,10 @@ while True:
             bd[2, 2].visible = False
             bd[2, 0].visible = False
             bd[1, 1].visible = False
-            button_up = bd[0, 1]
-            button_right = bd[1, 2]
-            button_left = bd[1, 0]
-            button_down = bd[2, 1]
+            button_up = bd[1, 0]
+            button_right = bd[2, 1]
+            button_left = bd[0, 1]
+            button_down = bd[1, 2]
             sg = Game()
             button_up.when_pressed = sg.snake.turn_up
             button_down.when_pressed = sg.snake.turn_down
