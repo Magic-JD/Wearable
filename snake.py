@@ -14,24 +14,26 @@ class SnakeSegment:
         self.direction = direction
 
     def turn_left(self):
+        print("Try to turn left")
         if (self.direction == Direction.NORTH or self.direction == Direction.SOUTH) and self.has_turned:
+            print("turn left")
             self.direction = Direction.EAST
-        self.has_turned = True
+            self.has_turned = True
 
     def turn_right(self):
         if (self.direction == Direction.NORTH or self.direction == Direction.SOUTH) and self.has_turned:
             self.direction = Direction.WEST
-        self.has_turned = True
+            self.has_turned = True
 
     def turn_up(self):
         if (self.direction == Direction.EAST or self.direction == Direction.WEST) and self.has_turned:
             self.direction = Direction.NORTH
-        self.has_turned = True
+            self.has_turned = True
 
     def turn_down(self):
         if (self.direction == Direction.EAST or self.direction == Direction.WEST) and self.has_turned:
             self.direction = Direction.SOUTH
-        self.has_turned = True
+            self.has_turned = True
 
     def move(self):
         # As the direction can be rotated depending on the position of the pi in the bag the meta directions don't need
