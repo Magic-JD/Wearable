@@ -13,6 +13,7 @@ class LightBoard:
 
     def __init__(self):
         uh.set_layout(uh.AUTO)
+        uh.rotation(180)
 
     def power_up(self):
         for k in range(3):

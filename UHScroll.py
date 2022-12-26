@@ -19,7 +19,6 @@ flip = [7,6,5,4,3,2,1,0]
 
 
 def show_letter(letter,colour,brightness): #displays a single letter on th UH
-	UH.rotation(180)
 	for i in range(8):
 		for j in range(8):
 			if letter[j][i]:
