@@ -94,4 +94,4 @@ class LightBoard:
         uh.show()
 
     def scroll_text(self, text):
-        unicorn_scroll(text, 'red', 255, 0.1)
+        unicorn_scroll(text, 'pink', 255, 0.1)
