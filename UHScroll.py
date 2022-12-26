@@ -110,7 +110,7 @@ def load_message(message):
 			else:
 				unicorn_message.append(trim_letter(map_character(message[ch].upper())))
 		
-	return(unicorn_message)
+	return unicorn_message[:-1]
 
 def unicorn_scroll(text,colour,brightness,speed):
 	#try:
