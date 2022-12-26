@@ -4,11 +4,14 @@ from lightboard import LightBoard
 from time import sleep
 
 lightboard = LightBoard()
-bd = BlueDot()
+bd = BlueDot(1, 2)
 light_show = True
+text = False
+game = False
 client_connected = False
 
 lightboard.power_up()
+
 
 def show_lightshow():
     lightboard.random_shimmer_setup()
@@ -29,12 +32,22 @@ def disconnect():
 
 def start_game():
     global light_show
+    global game
     light_show = False
+    game = True
+
+
+def start_text():
+    global light_show
+    global text
+    light_show = False
+    text = True
 
 
 bd.when_client_connects = connect
 bd.when_client_disconnects = disconnect
 bd[0, 0].when_pressed = start_game
+bd[0, 1].when_pressed = start_text
 
 while True:
     while not client_connected:
@@ -42,8 +55,9 @@ while True:
 
     while client_connected:
         show_lightshow()
-        if client_connected:
+        if client_connected and game:
             bd[0, 0].when_pressed = None
+            bd[0, 1].when_pressed = None
             bd.resize(3, 3)
             bd[0, 0].visible = False
             bd[0, 2].visible = False
@@ -68,7 +82,13 @@ while True:
             button_down.when_pressed = None
             button_right.when_pressed = None
             button_left.when_pressed = None
-            bd.resize(1, 1)
+            bd.resize(1, 2)
             bd[0, 0].when_pressed = start_game
+            bd[0, 1].when_pressed = start_text
             bd[0, 0].visible = True
-            light_show = True
+            bd[0, 1].visible = True
+            game = False
+        if client_connected and text:
+            lightboard.scroll_text('I am a dirty slut')
+            text = False
+        light_show = True

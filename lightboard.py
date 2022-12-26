@@ -13,8 +13,6 @@ class LightBoard:
 
     def __init__(self):
         uh.set_layout(uh.AUTO)
-        uh.rotation(90)
-        unicorn_scroll('hello world', 'red', 255, 0.1)
 
     def power_up(self):
         for k in range(3):
@@ -94,3 +92,6 @@ class LightBoard:
             for j in range(8):
                 uh.set_pixel(i, j, 0, 0, 0)
         uh.show()
+
+    def scroll_text(self, text):
+        unicorn_scroll(text, 'red', 255, 0.1)
