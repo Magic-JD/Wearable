@@ -3,6 +3,9 @@ from time import sleep
 
 # from unicorn_hat_sim import unicornhat
 import unicornhat as uh
+from UHScroll import *
+
+
 
 
 class LightBoard:
@@ -10,6 +13,8 @@ class LightBoard:
 
     def __init__(self):
         uh.set_layout(uh.AUTO)
+        uh.rotation(90)
+        unicorn_scroll('hello world', 'red', 255, 0.1)
 
     def power_up(self):
         for k in range(3):
