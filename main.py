@@ -90,7 +90,7 @@ while True:
             bd[0, 1].visible = True
             game = False
         if client_connected and text:
-            f = open("text.txt", "r")
+            f = open("usr/home/Project/Wearable/text.txt", "r")
             text_str = f.read()
             f.close()
             lightboard.scroll_text(text_str)
