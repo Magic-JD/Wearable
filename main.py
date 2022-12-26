@@ -90,6 +90,9 @@ while True:
             bd[0, 1].visible = True
             game = False
         if client_connected and text:
-            lightboard.scroll_text('I am a dirty slut ~smile ~heart')
+            f = open("text.txt", "r")
+            text_str = f.read()
+            f.close()
+            lightboard.scroll_text(text_str)
             text = False
         light_show = True
