@@ -38,13 +38,13 @@ class SnakeSegment:
         # to match the programmed directions
         self.has_turned = False
         if self.direction is Direction.NORTH:
-            self.move_east()
-        if self.direction is Direction.EAST:
-            self.move_south()
-        if self.direction is Direction.SOUTH:
             self.move_west()
-        if self.direction is Direction.WEST:
+        if self.direction is Direction.EAST:
             self.move_north()
+        if self.direction is Direction.SOUTH:
+            self.move_east()
+        if self.direction is Direction.WEST:
+            self.move_south()
 
     def move_north(self):
         self.move_internal(self.x, (self.y + 1) % self.DIMENSION)
