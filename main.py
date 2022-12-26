@@ -4,7 +4,8 @@ from lightboard import LightBoard
 from time import sleep
 
 lightboard = LightBoard()
-bd = BlueDot(1, 2)
+bd = BlueDot()
+bd.resize(1, 2)
 light_show = True
 text = False
 game = False
