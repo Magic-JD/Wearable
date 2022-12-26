@@ -2,7 +2,9 @@ from bluedot import BlueDot
 from snake_game import Game
 from lightboard import LightBoard
 from time import sleep
+from UHScroll import *
 
+unicorn_scroll('hello world','red',255,0.1)
 lightboard = LightBoard()
 bd = BlueDot()
 light_show = True
